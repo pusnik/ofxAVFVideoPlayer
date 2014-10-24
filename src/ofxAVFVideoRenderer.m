@@ -60,9 +60,12 @@
                 self.layerRenderer.layer = playerLayer;
                 
                 // Video is centered on 0,0 for some reason so layer bounds have to start at -width/2,-height/2
-                self.layerRenderer.bounds = CGRectMake(-videoSize.width/2, -videoSize.height/2, videoSize.width, videoSize.height);
+                //self.layerRenderer.bounds = CGRectMake(-videoSize.width/2, -videoSize.height/2, videoSize.width, videoSize.height);
+                
+                self.layerRenderer.bounds = CGRectMake(0, 0, videoSize.width, videoSize.height);
+                [self.layerRenderer.layer setAnchorPoint:CGPointMake(0.0, 0.0)];
                 self.playerLayer.bounds = self.layerRenderer.bounds;
-            
+                
                 ready = YES;
                 loading = NO;
             }
@@ -155,7 +158,7 @@
     glPushMatrix();
     glLoadIdentity();
 
-    glTranslatef(videoSize.width/2,videoSize.height/2,0);
+    //glTranslatef(videoSize.width/2,videoSize.height/2,0);
     
     [layerRenderer beginFrameAtTime:CACurrentMediaTime() timeStamp:NULL];
     [layerRenderer addUpdateRect:layerRenderer.layer.bounds];
